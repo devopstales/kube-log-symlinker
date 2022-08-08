@@ -2,7 +2,6 @@ kind: DaemonSet
 apiVersion: apps/v1
 metadata:
   name: log-linker
-  namespace: kube-system
   labels:
     app: log-linker
 spec:
@@ -16,7 +15,8 @@ spec:
     spec:
       containers:
       - name: log-linker
-        image: devopstales/kube-log-symlinker:latest
+        image: devopstales/kube-log-symlinker:1.0
+        imagePullPolicy: Always
         command:
         - /log-linker.sh
         volumeMounts:
